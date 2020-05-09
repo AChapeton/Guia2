@@ -14,65 +14,41 @@ namespace Ejercicio1
     public partial class Form1 : Form
     {
         Hashtable buscador = new Hashtable();
-        
-        
 
         public Form1()
         {
             InitializeComponent();
 
-            buscador.Add("Ter1", "Desc1");
-            buscador.Add("Ter2", "Desc2");
-            buscador.Add("Ter3", "Desc3");
-            buscador.Add("Ter4", "Desc4");
+            buscador.Add("Calculadora", "Aparato para cálculos matemáticos");
+            buscador.Add("Teclado", "Aparato electrónico para escribir");
+            buscador.Add("CPU", "Unidad Central de Proceso");
+            buscador.Add("Software", "Conjunto de programas, instrucciones y reglas informáticas para ejecutar ciertas tareas en una computadora");
+            buscador.Add("Hardware", "Conjunto de aparatos de una computadora");
+            buscador.Add("RAM", "Memoria de Acceso Aleatorio");
+            buscador.Add("Camara", "Sala o pieza principal de una casa");
+            buscador.Add("Celular", "Número que se asigna a cada teléfono celular");
+            buscador.Add("Programa", "Conjunto de operaciones ejecutadas por una máquina");
+            buscador.Add("Programacion", "Acción y efecto de programar");
+            buscador.Add("Cuaderno", "Conjunto o agregado de algunos pliegos de papel, doblados y cosidos en forma de libro");
+            buscador.Add("Libro", "Conjunto de muchas hojas de papel u otro material semejante que, encuadernadas, forman un volumen");
+            buscador.Add("Papel", "Hoja delgada hecha con pasta de fibras vegetales");
+            buscador.Add("Madera", "Material obtenido de un árbol");
+            buscador.Add("Jabon", "Producto soluble en agua");
+            buscador.Add("Agua", "Líquido transparente, incoloro, inodoro e insípido");
+            buscador.Add("Fuego", "Fenómeno caracterizado por la emisión de calor y de luz");
+            buscador.Add("Universidad", "Institución de enseñanza superior");
+            buscador.Add("Colegio", "Institución de enseñanza básica");
+            buscador.Add("Estudiante", "Persona que cursa estudios en un establecimiento de enseñanza");
+            buscador.Add("Profesor", "Persona que ejerce o enseña una ciencia o arte");
+            buscador.Add("Asignatura", "Cada una de las materias que se enseñan en un centro docente");
+            buscador.Add("Hora", "Tiempo que equivale a 60 minutos");
+            buscador.Add("Minuto", "Tiempo que equivale a 60 segundos");
+            buscador.Add("Segundo", "Unidad de tiempo del sistema internacional");
         }
-
-        /*
-        private Hashtable nuevoDato()
-        {
-            buscador.Add("Ter1", "Desc1");
-            buscador.Add("Ter2", "Desc2");
-            buscador.Add("Ter3", "Desc3");
-            buscador.Add("Ter4", "Desc4");
-            return buscador;
-        }
-        */
-
-        /*
-        private DataTable llenarTabla(Hashtable buscador)
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Palabra");
-            dt.Columns.Add("Descripción");
-
-            ICollection keys = buscador.Keys;
-
-            
-            foreach(var dato in buscador.Keys)
-            {
-                dt.Rows.Add(dato);
-            }
-
-            
-            foreach (var dato in buscador.Values)
-            {
-                dt.Rows.Add(dato);
-            }
-            
-
-            for(int i = 0; i < buscador.Count; i++)
-            {
-                dt.Rows.Add();
-            }
-            
-
-            return dt;
-        }
-        */
 
         private void Form1_Load(object sender, EventArgs e)
         {
-    
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,14 +58,12 @@ namespace Ejercicio1
             if(buscador[palabra] == null)
             {
                 MessageBox.Show("La palabra " + palabra + " no está registrada");
-                Limpiar();
             }
             else
             {
                 MessageBox.Show(palabra + ": " + buscador[palabra]);
-                Limpiar();
-
             }
+            Limpiar();
         }
 
         public void Limpiar()
@@ -117,8 +91,15 @@ namespace Ejercicio1
             }
             else
             {
-                buscador.Add(palabra, desc);
-                MessageBox.Show("Nuevo término agregado");
+                try
+                {
+                    buscador.Add(palabra, desc);
+                    MessageBox.Show("Nuevo término agregado");
+                }
+                catch
+                {
+                    MessageBox.Show("Palabra ya existente");
+                }
             }
             Limpiar();
         }
@@ -141,6 +122,16 @@ namespace Ejercicio1
                 MessageBox.Show("La palabra " + palabra + " fue eliminada");
             }
             Limpiar();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hay " + buscador.Count.ToString() + " palabras en el diccionario");
         }
     }
 }
